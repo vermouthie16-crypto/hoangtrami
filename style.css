@@ -366,16 +366,19 @@ footer { position: relative; z-index: 2; text-align: center; padding: 40px 6vw 6
   .t-item:nth-child(odd) .t-dot, .t-item:nth-child(even) .t-dot { left: 0; right: auto; }
   .t-card { max-width: 100%; }
 }
-/* Sửa lỗi ảnh avatar quá to và tràn khung (Cập nhật sửa triệt để) */
-.blob-frame img, 
-.avatar-container img,
-.avatar-inner img {
+/* Ép ảnh avatar hiển thị chuẩn khít với khung lượn sóng */
+.blob-frame {
+  position: relative;
+  width: 230px !important;
+  height: 230px !important;
+  overflow: hidden !important; /* Cắt bỏ hoàn toàn phần ảnh thừa tràn ra ngoài */
+}
+
+.blob-frame img {
   width: 100% !important;
   height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: cover !important;       /* Cắt cúp ảnh vuông vắn, không làm méo mặt */
-  object-position: center !important;  /* Luôn luôn căn giữa khuôn mặt */
-  border-radius: inherit !important;  /* Ép ảnh bo góc lượn sóng theo khung cha */
+  object-fit: cover !important;        /* Giữ nguyên tỉ lệ khuôn mặt, không bị móp méo */
+  object-position: center !important;  /* Luôn căn giữa ảnh */
+  border-radius: inherit !important;   /* Ép góc ảnh lượn sóng theo khung cha */
   display: block !important;
 }
