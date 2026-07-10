@@ -3,27 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoàng Trà Mi Portfolio 🩷🩵</title>
+<title>Trương Thảo Linh — Portfolio 🌸</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #FBFAFF;
-    --pink-pale: #FFEAF3;
-    --pink-soft: #FFC9E0;
-    --pink: #FF9FC6;
-    --blue-pale: #E3F1FF;
-    --blue-soft: #BFE0FF;
-    --blue: #7FB8F2;
-    --rose-deep: #E8659B;
-    --blue-deep: #4E8FD9;
-    --ink: #3C3A5A;
-    --ink-soft: #7C7BA0;
+    --cream: #FCFBF8;
+    --pink-pale: #FDEEF3;
+    --pink-soft: #FAD4E0;
+    --pink-mid: #EFA0BB;
+    --green-pale: #EBF6EC;
+    --green-soft: #CBEAD3;
+    --green-mid: #8FCBA0;
+    --peach: #F7C99A;
+    --peach-deep: #EDA05C;
+    --ink: #46414C;
+    --ink-soft: #837C8C;
     --white-soft: #FFFFFF;
-    --shadow-soft: 0 22px 44px -22px rgba(126,140,214,0.32);
-    --radius-lg: 30px;
-    --radius-sm: 18px;
+    --shadow-soft: 0 20px 40px -22px rgba(90, 70, 90, 0.22);
+    --radius-lg: 26px;
+    --radius-sm: 16px;
+    --sidebar-w: 264px;
   }
   *{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
@@ -31,267 +32,276 @@
     html{ scroll-behavior: auto; }
     *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
+  
+  /* NỀN ĐỘNG PHỨC TẠP */
   body{
     margin: 0; font-family: 'Quicksand', sans-serif; color: var(--ink);
-    background: linear-gradient(160deg, var(--cream) 0%, var(--pink-pale) 32%, var(--blue-pale) 68%, #F1F7FF 100%);
-    background-attachment: fixed; overflow-x: hidden; position: relative;
+    background: radial-gradient(at 0% 0%, #FDEEF3 0px, transparent 50%),
+                radial-gradient(at 100% 0%, #EBF6EC 0px, transparent 50%),
+                radial-gradient(at 100% 100%, #FFF5F0 0px, transparent 50%),
+                radial-gradient(at 0% 100%, #FCFBF8 0px, transparent 50%),
+                linear-gradient(135deg, #FCFBF8 0%, #FAD4E0 40%, #CBEAD3 80%, #FCFBF8 100%);
+    background-size: 200% 200%;
+    animation: meshFlow 12s ease-in-out infinite;
+    overflow-x: hidden;
+    position: relative;
   }
-  h1, h2, h3, .display{ font-family: 'Fraunces', serif; font-weight: 700; font-style: normal; }
+  @keyframes meshFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .blob{ position: fixed; border-radius: 50%; filter: blur(50px); opacity: 0.55; z-index: 0; pointer-events: none; }
+  .blob-1{ width: 400px; height: 400px; background: var(--pink-soft); top: -50px; right: -50px; animation: drift1 12s ease-in-out infinite; }
+  .blob-2{ width: 380px; height: 380px; background: var(--green-soft); bottom: -50px; left: -50px; animation: drift2 15s ease-in-out infinite; }
+  .blob-3{ width: 300px; height: 300px; background: var(--peach); top: 40%; left: 70%; opacity: 0.35; animation: drift1 18s ease-in-out infinite reverse; }
+  
+  @keyframes drift1{ 0%,100%{ transform: translate(0,0) scale(1) rotate(0deg); } 50%{ transform: translate(-50px,60px) scale(1.15) rotate(180deg); } }
+  @keyframes drift2{ 0%,100%{ transform: translate(0,0) scale(1) rotate(0deg); } 50%{ transform: translate(60px,-50px) scale(1.2) rotate(-180deg); } }
+
+  h1, h2, h3, .display{ font-family: 'Baloo 2', cursive; font-weight: 700; }
   a{ color: inherit; text-decoration: none; }
 
-  .blob{ position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.5; z-index: 0; pointer-events: none; }
-  .blob-1{ width: 380px; height: 380px; background: var(--pink-soft); top: -100px; left: -80px; animation: float1 15s ease-in-out infinite; }
-  .blob-2{ width: 340px; height: 340px; background: var(--blue-soft); bottom: -90px; right: -80px; animation: float2 19s ease-in-out infinite; }
-  .blob-3{ width: 260px; height: 260px; background: var(--blue); opacity: 0.25; top: 50%; right: 6%; animation: float3 17s ease-in-out infinite; }
-  @keyframes float1{ 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(40px,50px) scale(1.1); } }
-  @keyframes float2{ 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(-40px,-35px) scale(1.14); } }
-  @keyframes float3{ 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(-25px,-25px) scale(0.9); } }
-
-  #sticker-layer{ position: fixed; inset: 0; pointer-events: none; z-index: 1; }
-  .float-sticker{ position: absolute; font-size: 1.6rem; animation: bob 5.5s ease-in-out infinite; opacity: 0.9; will-change: transform; filter: drop-shadow(0 6px 10px rgba(126,140,214,0.18)); }
-  @keyframes bob{ 0%,100%{ transform: translateY(0) rotate(-6deg); } 50%{ transform: translateY(-18px) rotate(8deg); } }
-
   .cursor-glow{
-    position: fixed; width: 20px; height: 20px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.95), var(--blue-soft) 55%, transparent 75%);
+    position: fixed; width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.95), var(--pink-mid) 60%, transparent 75%);
     pointer-events: none; z-index: 999; transform: translate(-50%,-50%);
     mix-blend-mode: multiply; opacity: 0; transition: opacity 0.3s ease;
   }
 
-  nav{
-    position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 6vw; background: rgba(251, 250, 255, 0.78); backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(126,140,214,0.18);
+  /* CONTAINER CHỨA CÁC STICKER NỀN ĐỘNG (Z-INDEX: 1) */
+  #sakura-container {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 1; overflow: hidden;
   }
-  .logo-group{ display: flex; align-items: center; gap: 9px; }
-  .logo-mark{
-    width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, var(--pink), var(--blue)); color: #fff; font-family: 'Fraunces', serif;
-    font-size: 1rem; font-weight: 700; box-shadow: var(--shadow-soft);
-  }
-  .logo{ font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--ink); }
-  .mssv-chip{
-    font-size: 0.66rem; font-weight: 700; color: var(--rose-deep);
-    background: rgba(255,201,224,0.55); border: 1px solid rgba(126,140,214,0.3);
-    padding: 4px 11px; border-radius: 999px; margin-left: 8px; white-space: nowrap;
-  }
-  .nav-links{ display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
-  .nav-links li a{ position: relative; font-weight: 700; font-size: 0.88rem; color: var(--ink-soft); padding-bottom: 4px; }
-  .nav-links li a::after{
-    content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
-    background: linear-gradient(90deg, var(--pink), var(--blue-deep)); transition: width 0.35s ease;
-  }
-  .nav-links li a:hover::after, .nav-links li a.active::after{ width: 100%; }
-  .nav-links li a.active, .nav-links li a:hover{ color: var(--rose-deep); }
-  .nav-btn{
-    display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 999px;
-    font-weight: 700; font-size: 0.82rem; cursor: pointer; border: none; font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(120deg, var(--pink), var(--blue-deep)); color: #fff;
-    transition: transform 0.35s cubic-bezier(.3,1.4,.5,1);
-  }
-  .nav-btn:hover{ transform: translateY(-3px) rotate(-1deg); box-shadow: 0 12px 22px -8px rgba(126,140,214,0.5); }
-
-  section{ position: relative; z-index: 2; padding: 80px 6vw; max-width: 1180px; margin: 0 auto; }
-
-  /* ===== HERO ===== */
-  .hero-split{ display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: start; padding-top: 30px; }
-  .hero-sticky{ position: sticky; top: 100px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
-  .blob-frame{
-    width: 230px; height: 230px; position: relative;
-    background: linear-gradient(150deg, var(--pink-soft), var(--blue-soft));
-    border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
-    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-soft);
-    animation: blob-morph 10s ease-in-out infinite;
-  }
-  @keyframes blob-morph{
-    0%,100%{ border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%; }
-    50%{ border-radius: 58% 42% 35% 65% / 55% 55% 45% 45%; }
-  }
-  .blob-frame .avatar-inner{
-    width: 86%; height: 86%; border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
-    background: linear-gradient(160deg, #FFF0F7, #EAF4FF);
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
-    font-family: 'Fraunces', serif; font-size: 2.6rem; color: var(--ink); letter-spacing: 2px;
-  }
-  
-  /* Đã tối ưu CSS cho ảnh chân dung */
-  .blob-frame .avatar-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Giúp ảnh không bị móp méo */
-    border-radius: inherit; /* Bo góc mượt mà theo hiệu ứng blob */
+  .bg-sticker {
+    position: absolute; font-size: 1.6rem; user-select: none;
+    will-change: transform, top, left;
+    filter: drop-shadow(0 4px 6px rgba(239,160,187,0.18));
   }
 
-  .blob-frame .sticker{
-    position: absolute; bottom: -6px; right: -6px; background: #fff; border-radius: 50%;
-    width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.25rem; box-shadow: var(--shadow-soft); animation: wiggle 3.4s ease-in-out infinite;
-  }
-  @keyframes wiggle{ 0%,100%{ transform: rotate(-10deg); } 50%{ transform: rotate(12deg); } }
-  .hero-name{ font-size: 1.7rem; color: var(--ink); margin: 0; }
-  .hero-name span{ color: var(--rose-deep); }
-  .info-stack{ display: flex; flex-direction: column; gap: 8px; width: 100%; }
-  .info-pill{
-    display: flex; align-items: center; gap: 10px; background: var(--white-soft);
-    padding: 10px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; color: var(--ink-soft);
-    box-shadow: var(--shadow-soft); border: 1px solid rgba(126,140,214,0.15);
-  }
-  .info-pill .ic{ font-size: 1rem; }
+  /* TOÀN BỘ CHỮ VÀ NỘI DUNG SẼ ĐÈ LÊN TRÊN STICKER (Z-INDEX: 2) */
+  .layout{ position: relative; z-index: 2; min-height: 100vh; }
 
-  .hero-content{ display: flex; flex-direction: column; gap: 22px; }
+  /* ===== top bar ===== */
+  .topbar{
+    position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+    width: calc(100% - 32px); max-width: 1100px; z-index: 50;
+    display: flex; align-items: center; gap: 18px; padding: 10px 18px;
+    background: rgba(255,255,255,0.82); backdrop-filter: blur(16px);
+    border-radius: 20px; border: 1px solid rgba(70,65,76,0.08);
+    box-shadow: var(--shadow-soft);
+    animation: topbarIn 0.8s cubic-bezier(.2,.8,.3,1.1);
+  }
+  @keyframes topbarIn{ from{ opacity: 0; transform: translateX(-50%) translateY(-16px); } to{ opacity: 1; transform: translateX(-50%) translateY(0); } }
+  .tb-left{ display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .avatar-ring{
+    width: 46px; height: 46px; border-radius: 14px; padding: 3px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--pink-mid), var(--green-mid));
+    background-size: 220% 220%;
+    animation: avatarSpin 6s ease-in-out infinite, avatarFloat 4.5s ease-in-out infinite;
+  }
+  @keyframes avatarSpin{ 0%,100%{ background-position: 0% 30%; } 50%{ background-position: 100% 70%; } }
+  @keyframes avatarFloat{ 0%,100%{ transform: translateY(0) rotate(-2deg); } 50%{ transform: translateY(-3px) rotate(2deg); } }
+  .avatar-ring .avatar-inner{
+    width: 100%; height: 100%; border-radius: 11px; overflow: hidden; background: var(--pink-pale);
+    display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem; color: var(--ink);
+  }
+  .tb-id{ display: flex; flex-direction: column; gap: 2px; }
+  .tb-name{ font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 0.92rem; color: var(--ink); line-height: 1.2; }
+  .tb-chip{
+    font-size: 0.64rem; font-weight: 700; color: var(--ink); background: var(--pink-pale);
+    padding: 2px 9px; border-radius: 999px; border: 1px solid rgba(239,160,187,0.4); align-self: flex-start;
+  }
+  .sb-nav{ display: flex; flex-direction: row; gap: 2px; margin: 0 0 0 auto; }
+  .sb-nav a{
+    display: flex; align-items: center; gap: 7px; padding: 9px 14px; border-radius: 12px;
+    font-size: 0.82rem; font-weight: 700; color: var(--ink-soft); border-left: none;
+    transition: all 0.3s ease;
+  }
+  .sb-nav a .dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--ink-soft); transition: background 0.3s ease; }
+  .sb-nav a:hover{ background: var(--pink-pale); color: var(--ink); transform: translateY(-2px); }
+  .sb-nav a.active{ background: var(--pink-pale); color: var(--ink); }
+  .sb-nav a.active .dot{ background: var(--green-mid); }
+  .sb-drive{
+    display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 16px; flex-shrink: 0;
+    border-radius: 999px; font-weight: 700; font-size: 0.76rem; border: none; cursor: pointer;
+    background: linear-gradient(120deg, var(--pink-mid), var(--green-mid)); color: #fff;
+    transition: transform 0.3s ease;
+  }
+  .sb-drive:hover{ transform: translateY(-2px) scale(1.04); }
+
+  .content{ position: relative; z-index: 1; padding-top: 108px; }
+  section{ padding: 70px 6vw; max-width: 980px; margin: 0 auto; }
+
   .eyebrow{
-    display: inline-block; align-self: flex-start; background: var(--white-soft); padding: 7px 18px; border-radius: 999px;
-    font-weight: 700; font-size: 0.82rem; color: var(--rose-deep); box-shadow: var(--shadow-soft);
+    display: inline-block; background: var(--white-soft); padding: 6px 16px; border-radius: 999px;
+    font-weight: 700; font-size: 0.78rem; color: var(--ink); box-shadow: var(--shadow-soft); margin-bottom: 14px;
   }
-  .hero-content > p.lead{ font-size: 1.12rem; line-height: 1.9; color: var(--ink); margin: 0; }
-  .lead-card{
-    background: var(--white-soft); border-radius: var(--radius-lg); padding: 30px 32px;
-    box-shadow: var(--shadow-soft); border: 1px solid rgba(126,140,214,0.12); position: relative;
-  }
-  .narrative-card{
-    background: var(--white-soft); border-radius: var(--radius-lg); padding: 30px 32px;
-    box-shadow: var(--shadow-soft); border-left: 5px solid var(--pink); position: relative;
-  }
-  .narrative-card:nth-of-type(2n){ border-left-color: var(--blue-deep); }
-  .narrative-card h3{ display: flex; align-items: center; gap: 10px; font-size: 1.15rem; color: var(--ink); margin: 0 0 12px; }
-  .narrative-card p{ font-size: 0.98rem; line-height: 1.85; color: var(--ink-soft); margin: 0; }
-  .goal-list{ list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .goal-list li{
-    display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; line-height: 1.6; color: var(--ink-soft);
-    background: rgba(191,224,255,0.35); padding: 10px 14px; border-radius: 14px;
-  }
-  .goal-list li::before{ content: "🩷"; flex-shrink: 0; font-size: 0.8rem; }
-  .closing-card{
-    background: linear-gradient(135deg, var(--pink-soft), var(--blue-soft)); border-radius: var(--radius-lg);
-    padding: 30px 32px; text-align: center; box-shadow: var(--shadow-soft);
-  }
-  .closing-card h3{ margin: 0 0 12px; color: var(--ink); }
-  .closing-card p{ font-size: 1rem; line-height: 1.85; color: var(--ink); margin: 0; font-style: italic; }
+  #gioi-thieu h1{ font-size: clamp(1.7rem, 3.6vw, 2.3rem); color: var(--ink); margin: 0 0 22px; }
+  #gioi-thieu h1 span{ color: var(--pink-mid); }
 
-  .section-head{ text-align: center; margin-bottom: 54px; }
-  .section-head .eyebrow{ display: inline-block; margin-bottom: 12px; }
-  .section-head h2{ font-size: clamp(1.7rem, 4vw, 2.4rem); color: var(--ink); }
-  .section-head p{ max-width: 560px; margin: 10px auto 0; color: var(--ink-soft); font-size: 1.0rem; }
+  .hero-top{ display: flex; align-items: center; gap: 44px; margin-bottom: 30px; flex-wrap: wrap; }
+  .hero-top-text{ flex: 1 1 320px; }
+  .hero-top-text h1{ margin-bottom: 0; }
 
-  .reveal{ opacity: 0; transform: translateY(40px) scale(0.97); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.8,.3,1.15); }
-  .reveal.in-view{ opacity: 1; transform: translateY(0) scale(1); }
-
-  @media (max-width: 760px){
-    .hero-split{ grid-template-columns: 1fr; }
-    .hero-sticky{ position: relative; top: 0; }
+  /* ===== KHUNG ẢNH CHÂN DUNG ===== */
+  .photo-frame{
+    position: relative; width: 220px; height: 220px; flex-shrink: 0; margin: 10px auto;
   }
-
-  /* ===== BÀI TẬP — bento grid ===== */
-  .bento{
-    display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(200px, auto);
-    gap: 22px; max-width: 1080px; margin: 0 auto;
+  .photo-dash{
+    position: absolute; inset: -20px; border-radius: 34px;
+    border: 2px dashed rgba(239,160,187,0.55);
+    animation: dashSpin 22s linear infinite;
   }
-  .b-card{
-    position: relative; border-radius: var(--radius-lg); padding: 26px 26px 24px;
-    box-shadow: var(--shadow-soft); border: 1px solid rgba(126,140,214,0.14);
-    display: flex; flex-direction: column; overflow: hidden;
-    transition: transform 0.4s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.4s ease;
+  @keyframes dashSpin{ to{ transform: rotate(360deg); } }
+  .photo-dot{
+    position: absolute; top: -34px; left: -6px; width: 20px; height: 20px; border-radius: 50%;
+    background: radial-gradient(circle, var(--peach), var(--peach-deep));
+    box-shadow: 0 6px 14px -4px rgba(230,150,90,0.5);
+    animation: dotPulse 3.4s ease-in-out infinite;
   }
-  .b-card:hover{ transform: translateY(-8px) rotate(-0.4deg); box-shadow: 0 32px 50px -18px rgba(126,140,214,0.42); }
-  .b-card.pink{ background: linear-gradient(155deg, #FFF3F9 0%, var(--white-soft) 60%); }
-  .b-card.blue{ background: linear-gradient(155deg, #F1F8FF 0%, var(--white-soft) 60%); }
-  .b-card:nth-child(1){ grid-column: span 1; grid-row: span 2; }
-  .b-card:nth-child(2){ grid-column: span 2; }
-  .b-card:nth-child(3){ grid-column: span 1; }
-  .b-card:nth-child(4){ grid-column: span 1; }
-  .b-card:nth-child(5){ grid-column: span 2; }
-  .b-card:nth-child(6){ grid-column: span 2; grid-row: span 2; }
-
-  .hanzi-seal{
-    position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif;
-    font-size: 1.3rem; font-weight: 700; color: #fff; transform: rotate(3deg);
-    box-shadow: 0 10px 18px -8px rgba(126,140,214,0.5);
+  @keyframes dotPulse{ 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.2); } }
+  .photo-square{
+    width: 100%; height: 100%; border-radius: 28px; overflow: hidden;
+    border: 3px solid; border-image: linear-gradient(145deg, var(--pink-mid), var(--peach)) 1;
+    background: linear-gradient(160deg, var(--pink-pale), #fff);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-soft);
+    animation: frameFloat 6s ease-in-out infinite;
   }
-  .b-card.pink .hanzi-seal{ background: linear-gradient(135deg, var(--pink), var(--rose-deep)); }
-  .b-card.blue .hanzi-seal{ background: linear-gradient(135deg, var(--blue), var(--blue-deep)); }
-
-  .b-tag{
-    align-self: flex-start; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 999px;
-    color: var(--ink-soft); background: rgba(126,140,214,0.12); margin-bottom: 10px;
-  }
-  .b-card h3{ margin: 0 0 12px; color: var(--ink); font-size: 1.08rem; padding-right: 46px; line-height: 1.4; }
-  .b-card:nth-child(1) h3, .b-card:nth-child(6) h3{ font-size: 1.28rem; }
-  .b-goal{ display: flex; flex-direction: column; gap: 8px; margin: 0 0 auto; flex: 1; }
-  .b-goal .row{ display: flex; gap: 7px; align-items: flex-start; padding: 9px 11px; border-radius: 12px; font-size: 0.83rem; line-height: 1.55; color: var(--ink-soft); }
-  .b-card.pink .b-goal .row{ background: rgba(255,201,224,0.32); }
-  .b-card.blue .b-goal .row{ background: rgba(191,224,255,0.4); }
-  .b-goal .row b{ color: var(--ink); }
-  .b-card .drive-btn{
-    display: inline-block; margin-top: 16px; padding: 8px 16px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
-    color: #fff; align-self: flex-start;
-  }
-  .b-card.pink .drive-btn{ background: linear-gradient(120deg, var(--pink), var(--rose-deep)); }
-  .b-card.blue .drive-btn{ background: linear-gradient(120deg, var(--blue), var(--blue-deep)); }
-
-  @media (max-width: 900px){
-    .bento{ grid-template-columns: repeat(2, 1fr); }
-    .b-card:nth-child(1), .b-card:nth-child(6){ grid-column: span 2; grid-row: span 1; }
-    .b-card:nth-child(2), .b-card:nth-child(5){ grid-column: span 2; }
-    .b-card:nth-child(3), .b-card:nth-child(4){ grid-column: span 1; }
-  }
-  @media (max-width: 560px){
-    .bento{ grid-template-columns: 1fr; }
-    .bento .b-card{ grid-column: span 1 !important; grid-row: span 1 !important; }
+  @keyframes frameFloat{ 0%,100%{ transform: translateY(0) rotate(-1deg); } 50%{ transform: translateY(-10px) rotate(1deg); } }
+  .photo-square img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-fallback{
+    font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 3.2rem; color: var(--pink-mid);
+    width: 100%; height: 100%; align-items: center; justify-content: center;
   }
 
-  /* ===== TỔNG KẾT ===== */
-  .tk-wrap{
-    display: grid; grid-template-columns: 250px 1fr; gap: 30px; max-width: 980px; margin: 0 auto 56px;
-    background: var(--white-soft); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(126,140,214,0.14); padding: 26px; align-items: stretch;
+  .photo-sticker{
+    position: absolute; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center; font-size: 2.3rem;
+    z-index: 5; filter: drop-shadow(0 4px 6px rgba(90, 70, 90, 0.15));
+    animation: stickerWiggle 4s ease-in-out infinite;
   }
-  .tk-tabs{ display: flex; flex-direction: column; gap: 10px; }
-  .tk-tab{
-    text-align: left; border: none; cursor: pointer; font-family: 'Quicksand', sans-serif;
-    padding: 14px 16px; border-radius: 16px; font-weight: 700; font-size: 0.9rem; color: var(--ink-soft);
-    background: transparent; display: flex; align-items: center; gap: 10px; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    position: relative;
-  }
-  .tk-tab .num{
-    width: 26px; height: 26px; border-radius: 50%; background: rgba(126,140,214,0.14); color: var(--ink-soft);
-    display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0;
-    font-family: 'Fraunces', serif; transition: background 0.3s ease, color 0.3s ease;
-  }
-  .tk-tab:hover{ background: rgba(191,224,255,0.3); transform: translateX(3px); }
-  .tk-tab.active{ background: linear-gradient(120deg, var(--pink-pale), var(--blue-pale)); color: var(--ink); }
-  .tk-tab.active .num{ background: linear-gradient(135deg, var(--pink), var(--blue-deep)); color: #fff; }
-  .tk-panel-wrap{
-    background: linear-gradient(160deg, #FFF6FA, #F2F9FF); border-radius: var(--radius-sm);
-    padding: 30px 32px; display: flex; align-items: center; min-height: 220px;
-  }
-  .tk-panel{ display: none; font-size: 0.98rem; line-height: 1.9; color: var(--ink-soft); text-align: justify; }
-  .tk-panel.active{ display: block; animation: fadeIn 0.45s ease; }
-  .tk-panel strong{ color: var(--ink); }
-  @keyframes fadeIn{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: translateY(0); } }
+  .sticker-1{ bottom: -12px; left: -14px; }
+  .sticker-2{ top: 46%; right: -20px; animation-delay: 1s; }
+  @keyframes stickerWiggle{ 0%,100%{ transform: rotate(-8deg); } 50%{ transform: rotate(10deg); } }
 
   @media (max-width: 700px){
-    .tk-wrap{ grid-template-columns: 1fr; }
-    .tk-tabs{ flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
-    .tk-tab{ white-space: nowrap; }
+    .hero-top{ flex-direction: column; text-align: center; }
   }
 
-  .ring-strip{ display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 820px; margin: 0 auto; }
-  .ring-item{ display: flex; flex-direction: column; align-items: center; gap: 12px; }
-  .ring-item svg{ width: 128px; height: 128px; transform: rotate(-90deg); }
-  .ring-track{ fill: none; stroke: rgba(126,140,214,0.15); stroke-width: 10; }
-  .ring-bar{ fill: none; stroke-width: 10; stroke-linecap: round; stroke-dasharray: 339.3; stroke-dashoffset: 339.3; transition: stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1); }
-  .ring-item:nth-child(1) .ring-bar{ stroke: url(#gradPink); }
-  .ring-item:nth-child(2) .ring-bar{ stroke: url(#gradMix); }
-  .ring-item:nth-child(3) .ring-bar{ stroke: url(#gradBlue); }
-  .ring-num{ position: relative; margin-top: -92px; font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--ink); }
-  .ring-label{ font-size: 0.86rem; color: var(--ink-soft); text-align: center; margin-top: 46px; }
+  .narrative-card{
+    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); border-radius: var(--radius-lg); padding: 26px 30px;
+    box-shadow: var(--shadow-soft); margin-bottom: 20px; border-top: 3px solid var(--pink-soft);
+  }
+  .narrative-card:nth-of-type(2n){ border-top-color: var(--green-soft); }
+  .narrative-card h3{ display: flex; align-items: center; gap: 9px; font-size: 1.06rem; color: var(--ink); margin: 0 0 12px; }
+  .narrative-card p{ font-size: 0.95rem; line-height: 1.8; color: var(--ink-soft); margin: 0; }
+  .goal-list{ list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .goal-list li{
+    display: flex; align-items: flex-start; gap: 9px; font-size: 0.89rem; line-height: 1.6; color: var(--ink-soft);
+    background: var(--pink-pale); padding: 9px 13px; border-radius: 12px;
+  }
+  .goal-list li::before{ content: "🌷"; flex-shrink: 0; font-size: 0.78rem; }
+  .closing-card{
+    background: linear-gradient(135deg, rgba(250,212,224,0.8), rgba(203,234,211,0.8)); backdrop-filter: blur(8px); border-radius: var(--radius-lg);
+    padding: 26px 30px; box-shadow: var(--shadow-soft);
+  }
+  .closing-card h3{ margin: 0 0 10px; color: var(--ink); }
+  .closing-card p{ font-size: 0.95rem; line-height: 1.8; color: var(--ink); margin: 0; font-style: italic; }
 
-  footer{ position: relative; z-index: 2; text-align: center; padding: 40px 6vw 60px; color: var(--ink-soft); font-size: 0.9rem; }
+  .section-head{ text-align: center; margin-bottom: 44px; }
+  .section-head h2{ font-size: clamp(1.6rem, 3.6vw, 2.15rem); color: var(--ink); }
+  .section-head p{ max-width: 520px; margin: 8px auto 0; color: var(--ink-soft); font-size: 0.95rem; }
 
+  .reveal{ opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.8,.3,1.1); }
+  .reveal.in-view{ opacity: 1; transform: translateY(0); }
+
+  /* ===== bai tap — vertical timeline ===== */
+  .timeline{ position: relative; max-width: 800px; margin: 0 auto; }
+  .timeline::before{
+    content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%);
+    background: linear-gradient(180deg, var(--pink-mid), var(--green-mid));
+  }
+  .t-item{ position: relative; width: 50%; padding: 0 40px 46px; }
+  .t-item:nth-child(odd){ left: 0; text-align: right; }
+  .t-item:nth-child(even){ left: 50%; text-align: left; }
+  .t-dot{
+    position: absolute; top: 2px; width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-mid), var(--green-mid)); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', cursive; font-weight: 700;
+    font-size: 0.9rem; box-shadow: var(--shadow-soft); z-index: 2;
+  }
+  .t-item:nth-child(odd) .t-dot{ right: -19px; }
+  .t-item:nth-child(even) .t-dot{ left: -19px; }
+  .t-card{
+    display: inline-block; text-align: left; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(6px); border-radius: var(--radius-sm);
+    padding: 20px 22px; box-shadow: var(--shadow-soft); max-width: 380px;
+    transition: transform 0.35s ease;
+  }
+  .t-card:hover{ transform: translateY(-5px); }
+  .t-card .tag{ font-size: 0.65rem; font-weight: 800; padding: 4px 11px; border-radius: 999px; background: var(--pink-pale); color: var(--ink); }
+  .t-card h3{ margin: 9px 0 11px; color: var(--ink); font-size: 1.0rem; }
+  .t-goal{ display: flex; flex-direction: column; gap: 7px; margin: 0 0 12px; }
+  .t-goal .row{ display: flex; gap: 6px; align-items: flex-start; padding: 8px 10px; border-radius: 10px; background: var(--pink-pale); font-size: 0.79rem; line-height: 1.5; color: var(--ink-soft); }
+  .t-goal .row.result{ background: var(--green-pale); }
+  .t-goal .row b{ color: var(--ink); }
+  .t-card .drive-btn{
+    display: inline-block; padding: 7px 15px; border-radius: 999px; font-size: 0.74rem; font-weight: 700;
+    background: linear-gradient(120deg, var(--pink-mid), var(--green-mid)); color: #fff;
+  }
   @media (max-width: 760px){
-    nav{ padding: 14px 5vw; }
-    .nav-links{ display: none; }
+    .timeline::before{ left: 18px; }
+    .t-item, .t-item:nth-child(even){ width: 100%; left: 0; padding: 0 0 36px 48px; text-align: left; }
+    .t-item:nth-child(odd) .t-dot, .t-item:nth-child(even) .t-dot{ left: 0; right: auto; }
+    .t-card{ max-width: 100%; }
+  }
+
+  /* ===== tong ket — accordion ===== */
+  .acc-wrap{ max-width: 720px; margin: 0 auto 46px; display: flex; flex-direction: column; gap: 14px; }
+  details.acc-item{
+    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(6px); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); overflow: hidden;
+  }
+  details.acc-item summary{
+    list-style: none; cursor: pointer; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 0.98rem; color: var(--ink);
+  }
+  details.acc-item summary::-webkit-details-marker{ display: none; }
+  .acc-plus{
+    width: 28px; height: 28px; border-radius: 50%; background: var(--pink-pale); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 0.95rem; color: var(--ink);
+    transition: transform 0.35s ease;
+  }
+  details.acc-item[open] .acc-plus{ transform: rotate(45deg); background: var(--green-pale); }
+  .acc-body{ padding: 0 24px 22px; font-size: 0.9rem; line-height: 1.8; color: var(--ink-soft); text-align: justify; }
+
+  .summary-stats{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px; max-width: 640px; margin: 0 auto; text-align: center; }
+  .stat{ padding: 12px; border-radius: 16px; transition: transform 0.3s ease; }
+  .stat .num{
+    font-family: 'Baloo 2', cursive; font-size: 1.9rem; color: var(--pink-mid); display: inline-block;
+    transition: text-shadow 0.35s ease, transform 0.35s ease;
+  }
+  .stat.in-view .num{ animation: popNum 0.6s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes popNum{ 0%{ transform: scale(0.4); opacity: 0; } 60%{ transform: scale(1.15); opacity: 1; } 100%{ transform: scale(1); } }
+  .stat:hover{ transform: translateY(-3px); }
+  .stat:hover .num{
+    color: var(--green-mid);
+    text-shadow: 0 0 10px rgba(143,203,160,0.55), 0 0 20px rgba(239,160,187,0.5);
+    transform: scale(1.08);
+  }
+  .stat .label{ font-size: 0.82rem; color: var(--ink-soft); margin-top: 4px; }
+
+  footer{ text-align: center; padding: 30px 6vw 50px; color: var(--ink-soft); font-size: 0.85rem; }
+
+  @media (max-width: 900px){
+    .topbar{ flex-wrap: wrap; border-radius: 18px; padding: 10px 14px; gap: 10px; }
+    .tb-chip{ display: none; }
+    .sb-nav{ margin: 0; order: 3; width: 100%; justify-content: center; }
+    .sb-drive{ display: none; }
+    .content{ padding-top: 128px; }
   }
 </style>
 </head>
@@ -300,250 +310,305 @@
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
-<div id="sticker-layer"></div>
+
+<div id="sakura-container"></div>
+
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<nav>
-  <div class="logo-group">
-    <span class="logo-mark">茶</span>
-    <span class="logo">Trà Mi</span>
-    <span class="mssv-chip">MSSV: 25041727</span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#gioi-thieu" class="nav-link">Giới thiệu</a></li>
-    <li><a href="#bai-tap" class="nav-link">Bài tập cá nhân</a></li>
-    <li><a href="#tong-ket" class="nav-link">Tổng kết</a></li>
-  </ul>
-  <a href="https://drive.google.com/drive/folders/1ttWhLZftN4sUM1Dp1V5C46ZEqX71spZB?usp=drive_link" class="nav-btn">Google Drive</a>
-</nav>
-
-<section id="gioi-thieu">
-  <div class="hero-split">
-    <div class="hero-sticky reveal">
-      <div class="blob-frame">
+<div class="layout">
+  <header class="topbar">
+    <div class="tb-left">
+      <div class="avatar-ring">
         <div class="avatar-inner">
-          <img src="hoangtrami.jpg" alt="Hoàng Trà Mi">
+          <img src="thaolinh.jpg" alt="Avatar" style="width: 100% !important; height: 100% !important; object-fit: cover !important;">
         </div>
-        <div class="sticker">🌸</div>
       </div>
-      <h1 class="hero-name">Hoàng Trà Mi</h1>
-      <div class="info-stack">
-        <div class="info-pill"><span class="ic">🎓</span> MSSV: 25041727</div>
-        <div class="info-pill"><span class="ic">🈺</span> Ngôn ngữ và Văn hóa Trung Quốc</div>
-        <div class="info-pill"><span class="ic">🏫</span> ĐH Ngoại ngữ – ĐHQGHN</div>
+      <div class="tb-id">
+        <span class="tb-name">Trương Thảo Linh</span>
+        <span class="tb-chip">MSSV: 25042180</span>
       </div>
     </div>
+    <nav class="sb-nav">
+      <a href="#gioi-thieu" class="nav-link active"><span class="dot"></span> Giới thiệu</a>
+      <a href="#bai-tap" class="nav-link"><span class="dot"></span> Bài tập cá nhân</a>
+      <a href="#tong-ket" class="nav-link"><span class="dot"></span> Tổng kết</a>
+    </nav>
+    <a href="#" class="sb-drive">📁 Google Drive</a>
+  </header>
 
-    <div class="hero-content">
-      <span class="eyebrow reveal">Giới thiệu</span>
-      <div class="lead-card reveal">
-        <p class="lead">Chào mừng bạn đã ghé thăm góc nhỏ lưu trữ của một cô sinh viên ngành <b>Ngôn ngữ và Văn hóa Trung Quốc</b> tại <b>Trường Đại học Ngoại Ngữ – Đại học Quốc gia Hà Nội</b>. Trang Portfolio này chính là một cuốn nhật ký số sống động, ghi lại hành trình mình từng bước phá vỡ giới hạn của một người học ngôn ngữ thuần túy để tự tin kết nối, làm chủ công nghệ số và các ứng dụng trí tuệ nhân tạo thế hệ mới.</p>
+  <main class="content">
+    <section id="gioi-thieu">
+      <div class="hero-top">
+        <div class="hero-top-text">
+          <span class="eyebrow reveal">🌸 Lời chào từ mình</span>
+          <h1 class="reveal">Xin chào! Mình là <span>Trương Thảo Linh</span></h1>
+        </div>
+        <div class="photo-frame reveal">
+          <div class="photo-dash"></div>
+          <div class="photo-dot"></div>
+          <div class="photo-square">
+            <img src="thaolinh.jpg" alt="Ảnh của Trương Thảo Linh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="photo-fallback" style="display:none;">TL</span>
+          </div>
+          <div class="photo-sticker sticker-1">🎀</div>
+          <div class="photo-sticker sticker-2">📖</div>
+        </div>
       </div>
 
       <div class="narrative-card reveal">
-        <h3>Đôi nét về bản thân</h3>
-        <p>Mình là người thích sự nhẹ nhàng, tỉ mỉ và có phần mộng mơ. Mình tin rằng học một ngôn ngữ mới cũng giống như làm quen với một người bạn, cần thời gian, sự kiên nhẫn và cả những rung động nho nhỏ mỗi khi hiểu thêm một điều mới. Ngoài giờ học, mình thích xem phim Trung, nghe nhạc Hoa ngữ. Mình là một người luôn tìm kiếm sự cân bằng và cảm hứng trong cuộc sống: mình chọn lật mở những trang sách để tìm tòi tri thức, chọn những bộ phim hay để làm phong phú thế giới quan và nạp lại năng lượng tích cực</p>
+        <h3>🌱 Về bản thân</h3>
+        <p>Mình là sinh viên ngành Ngôn ngữ và Văn hóa Nhật Bản, một người khá nhẹ nhàng và tỉ mỉ trong cách sống. Mình yêu thích sự tinh tế trong văn hoá Nhật – từ cách sắp xếp không gian đến cách người Nhật trân trọng từng khoảnh khắc nhỏ. Với mình, "một điều nhịn chín điều lành" – sự kiên nhẫn luôn là chìa khoá cho mọi hành trình học tập.</p>
       </div>
 
       <div class="narrative-card reveal">
-        <h3>Mục tiêu học tập và phát triển</h3>
-        <p>Mình luôn tự nhắc bản thân rằng ngôn ngữ cần được trau dồi mỗi ngày, "quen tay hay việc". Vì vậy mình mong muốn có thể:</p>
+        <h3>🎯 Mục tiêu học tập và phát triển</h3>
+        <p>Mình mong muốn xây dựng nền tảng tiếng Nhật vững chắc và hiểu sâu hơn về văn hoá xứ sở hoa anh đào. Cụ thể, mình hướng đến:</p>
         <ul class="goal-list">
-          <li>Bước ra khỏi vùng an toàn để trang bị một tư duy số vững chắc.</li>
-          <li>Chủ động "cộng tác" với trí tuệ nhân tạo như một trợ lý thông minh nhằm tối ưu hóa hiệu suất nghiên cứu và dịch thuật văn hóa.</li>
-          <li>Thành thạo các công cụ công nghệ mới để tự tay sáng tạo và thiết kế các ấn phẩm.</li>
-          <li>hướng tới việc ứng dụng công nghệ một cách văn minh, an toàn và bảo đảm tính liêm chính học thuật tối đa.</li>
+          <li>Nâng cao đều 4 kỹ năng nghe – nói – đọc – viết tiếng Nhật</li>
+          <li>Tìm hiểu sâu hơn về văn hoá, lịch sử và con người Nhật Bản</li>
+          <li>Tự tin hơn khi giao tiếp và làm việc trong môi trường đa văn hoá</li>
+          <li>Biết ứng dụng công nghệ, AI để hỗ trợ việc học ngôn ngữ hiệu quả</li>
         </ul>
       </div>
 
       <div class="narrative-card reveal">
-        <h3>Mục tiêu của Portfolio</h3>
-        <p>Không gian Portfolio này được thiết kế để trở thành một "trạm lưu trữ dữ liệu" cá nhân, nơi mình hệ thống hóa và đóng gói trọn vẹn toàn bộ các sản phẩm thực hành cùng chuỗi dự án số qua từng tuần học một cách khoa học nhất, để thông qua đó bản thân có thể tự đánh giá, đo lường sự trưởng thành trong tư duy công nghệ của chính mình theo thời gian, đồng thời trân trọng gìn giữ những trải nghiệm thực tế đầy hào hứng cùng những kỷ niệm vô giá bên thầy cô và bạn bè.</p>
+        <h3>📔 Mục tiêu của Portfolio</h3>
+        <p>Portfolio này là nơi mình lưu lại từng chặng đường nhỏ trong quá trình học tập. Thông qua đó, mình mong muốn:</p>
+        <ul class="goal-list">
+          <li>Ghi lại quá trình học tập một cách rõ ràng và có hệ thống</li>
+          <li>Nhìn lại sự tiến bộ của bản thân qua từng học kỳ</li>
+          <li>Lưu giữ những kỷ niệm và trải nghiệm đáng nhớ trong quá trình học</li>
+        </ul>
       </div>
 
       <div class="closing-card reveal">
-        <h3>Lời tâm sự</h3>
-        <p>With mình, tìm hiểu về công nghệ là một hành trình dài, nhiều thử thách nhưng cũng đầy thú vị. Portfolio này là bằng chứng nhỏ cho sự cố gắng của mình ở hiện tại, và mình hy vọng sẽ tiếp tục tiến xa hơn trong tương lai.</p>
+        <h3>💌 Lời kết</h3>
+        <p>Học một ngôn ngữ mới giống như trồng một khu vườn nhỏ – cần thời gian, sự kiên nhẫn và chăm sóc mỗi ngày. Mình tin rằng những cố gắng nhỏ hôm nay sẽ dần nở thành thành quả đẹp trong tương lai. Cảm ơn bạn đã ghé thăm góc nhỏ này của mình!</p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="bai-tap">
-  <div class="section-head reveal">
-    <span class="eyebrow">Sản phẩm cá nhân</span>
-    <h2>Tổng kết bài tập cá nhân</h2>
-    <p>Mỗi ô trong bảng là một mảnh ghép kỹ năng số mình đã tích lũy được</p>
-  </div>
-
-  <div class="bento">
-    <div class="b-card pink reveal">
-      <div class="hanzi-seal">一</div>
-      <span class="b-tag">Bài 1</span>
-      <h3>Thao tác cơ bản với tệp tin và thư mục</h3>
-      <div class="b-goal">
-        <div class="row"><b>Mục tiêu:</b> Nắm vững nền tảng hệ điều hành để sắp xếp tài liệu một cách khoa học.</div>
-        <div class="row"><b>Quá trình thực hiện:</b> Trực tiếp cấu trúc lại bộ nhớ máy tính thông qua sơ đồ phân cấp tệp tin chuyên nghiệp, ứng dụng tổ hợp phím tắt nâng cao để tối ưu tốc độ xử lý và dọn dẹp hệ điều hành.</div>
+    <section id="bai-tap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sản phẩm cá nhân</span>
+        <h2>Hành trình 6 bài tập cá nhân 🌿</h2>
+        <p>Mỗi dấu mốc trên dòng thời gian là một bài học nhỏ mình đã tích luỹ được</p>
       </div>
-      <a href="https://drive.google.com/file/d/1qvBYlhkO6664fRIyKW2i5h5rw3g6EL4N/view?usp=drive_link" class="drive-btn">Xem báo cáo</a>
-    </div>
-
-    <div class="b-card blue reveal">
-      <div class="hanzi-seal">二</div>
-      <span class="b-tag">Bài 2</span>
-      <h3>Tìm kiếm và đánh giá thông tin học thuật</h3>
-      <div class="b-goal">
-        <div class="row"><b>Mục tiêu:</b> Định hình tư duy nghiên cứu, chọn lọc nguồn tài liệu chính thống và các thư viện số.</div>
-        <div class="row"><b>Quá trình thực hiện:</b> Thực hành truy vấn dữ liệu bằng các toán tử tìm kiếm chuyên sâu trên các nền tảng số công cộng, tiến hành phân tích đa chiều và kiểm chứng chéo độ tin cậy của tài liệu.</div>
+      <div class="timeline">
+        <div class="t-item reveal">
+          <div class="t-dot">1</div>
+          <div class="t-card">
+            <span class="tag">Bài 1</span>
+            <h3>📎 Thao tác cơ bản với tệp tin và thư mục</h3>
+            <div class="t-goal">
+              <div class="row"><b>⛩️ Mục tiêu:</b> Nắm vững nền tảng hệ điều hành để thiết lập tư duy sắp xếp, lưu trữ và đồng bộ hóa tài liệu một cách tối ưu.</div>
+              <div class="row result"><b>⭐ Thành quả:</b> Quản lý dữ liệu máy tính ngăn nắp, làm chủ các phím tắt cốt lõi giúp tăng tốc độ xử lý tác vụ hàng ngày.</div>
+            </div>
+            <a href="#" class="drive-btn">GG Drive</a>
+          </div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-dot">2</div>
+          <div class="t-card">
+            <span class="tag">Bài 2</span>
+            <h3>📎 Tìm kiếm và đánh giá thông tin học thuật</h3>
+            <div class="t-goal">
+              <div class="row"><b>⛩️ Mục tiêu:</b> Định hình tư duy nghiên cứu thông qua việc chọn lọc nguồn học liệu chính thống tại Google Scholar và CiNii.</div>
+              <div class="row result"><b>⭐ Thành quả:</b> Xây dựng thành công bộ tài liệu tham khảo chất lượng, biết cách thẩm định nguồn tin phục vụ các bài luận chuyên ngành.</div>
+            </div>
+            <a href="#" class="drive-btn">GG Drive</a>
+          </div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-dot">3</div>
+          <div class="t-card">
+            <span class="tag">Bài 3</span>
+            <h3>📎 Viết Prompt hiệu quả cho việc học tiếng Nhật</h3>
+            <div class="t-goal">
+              <div class="row"><b>⛩️ Mục tiêu:</b> Học cách làm chủ ngôn ngữ gợi ý (Prompt) để khai thác tối đa và chính xác năng lực hỗ trợ của AI trong việc luyện chữ Kanji và ngữ pháp.</div>
+              <div class="row result"><b>⭐ Thành quả:</b> Hoàn thành kho câu hỏi ôn tập thông minh bằng cách áp dụng nhuần nhuyễn các kỹ thuật ra lệnh nâng cao cho AI.</div>
+            </div>
+            <a href="#" class="drive-btn">GG Drive</a>
+          </div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-dot">4</div>
+          <div class="t-card">
+            <span class="tag">Bài 4</span>
+            <h3>📎 Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
+            <div class="t-goal">
+              <div class="row"><b>⛩️ Mục tiêu:</b> Vận dụng bộ công cụ đám mây Google để tối ưu hóa quy trình tương tác, chia sẻ và làm việc nhóm từ xa.</div>
+              <div class="row result"><b>⭐ Thành quả:</b> Làm chủ kỹ năng điều phối dữ liệu, đồng bộ hóa kịch bản thời gian thực và quản lý tài nguyên số của tập thể.</div>
+            </div>
+            <a href="#" class="drive-btn">GG Drive</a>
+          </div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-dot">5</div>
+          <div class="t-card">
+            <span class="tag">Bài 5</span>
+            <h3>📎 Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
+            <div class="t-goal">
+              <div class="row"><b>⛩️ Mục tiêu:</b> Khai thác sức mạnh liên kết của các AI tạo sinh (văn bản, hình ảnh, thiết kế) để nâng cấp tư duy làm slide thuyết trình.</div>
+              <div class="row result"><b>⭐ Thành quả:</b> Hoàn thiện sản phẩm đồ họa có tính thẩm mỹ cao, biết cách lồng ghép tư duy phản biện chứ không lạm dụng công nghệ.</div>
+            </div>
+            <a href="#" class="drive-btn">GG Drive</a>
+          </div>
+        </div>
+        <div class="t-item reveal">
+          <div class="t-dot">6</div>
+          <div class="t-card">
+            <span class="tag">Bài 6</span>
+            <h3>📎 Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
+            <div class="t-goal">
+              <div class="row"><b>⛩️ Mục tiêu:</b> Thấu hiểu các tiêu chuẩn liêm chính học thuật để ứng dụng AI an toàn, văn minh và tôn trọng bản quyền dữ liệu.</div>
+              <div class="row result"><b>⭐ Thành quả:</b> Thiết lập bộ nguyên tắc ứng xử số cá nhân và hoàn thành Infographic truyền tải thông điệp sử dụng AI có đạo đức.</div>
+            </div>
+            <a href="#" class="drive-btn">GG Drive</a>
+          </div>
+        </div>
       </div>
-      <a href="https://drive.google.com/file/d/1gZPyGHC4P9uXxTUHrayyyQroTKrhc5p1/view?usp=drive_link" class="drive-btn">Xem báo cáo</a>
-    </div>
+    </section>
 
-    <div class="b-card pink reveal">
-      <div class="hanzi-seal">三</div>
-      <span class="b-tag">Bài 3</span>
-      <h3>Viết Prompt hiệu quả và Tổng quan về trí tuệ nhân tạo</h3>
-      <div class="b-goal">
-        <div class="row"><b>Mục tiêu:</b>Chuyển đổi từ tư duy "sử dụng" sang tư duy "điều khiển" công nghệ, thấu hiểu nguyên lý vận hành của AI tạo sinh để tối ưu hóa hiệu suất cá nhân.</div>
-        <div class="row"><b>Quá trình thực hiện:</b> Nghiên cứu kỹ nghệ kỹ sư câu lệnh (Prompt Engineering), xây dựng ma trận prompt đa tầng để thử nghiệm năng lực của mô hình, từ đó xuất bản bộ câu hỏi ôn tập chất lượng.</div>
+    <section id="tong-ket">
+      <div class="section-head reveal">
+        <span class="eyebrow">Tổng kết</span>
+        <h2>Nhìn nhận &amp; Trải nghiệm học tập 🌸</h2>
+        <p>Chạm vào từng mục để mở rộng và đọc thêm nhé</p>
       </div>
-      <a href="https://drive.google.com/file/d/1o8THChMIFOWiabcdvsVJdrpAt_VmP6WR/view?usp=drive_link" class="drive-btn">Xem báo cáo</a>
-    </div>
 
-    <div class="b-card blue reveal">
-      <div class="hanzi-seal">四</div>
-      <span class="b-tag">Bài 4</span>
-      <h3>Công cụ hợp tác trực tuyến cho dự án nhóm</h3>
-      <div class="b-goal">
-        <div class="row"><b>Mục tiêu:</b>hiết lập phong cách làm việc nhóm hiện đại dựa trên văn hóa chia sẻ và đồng bộ dữ liệu liên tục trên không gian đám mây.</div>
-        <div class="row"><b>Quá trình thực hiện:</b> Thực hành truy vấn dữ liệu bằng các toán tử tìm kiếm chuyên sâu trên các nền tảng số công cộng, tiến hành phân tích đa chiều và kiểm chứng chéo độ tin cậy của tài liệu.</div>
+      <div class="acc-wrap">
+        <details class="acc-item reveal" open>
+          <summary>💡 Bài học cốt lõi <span class="acc-plus">+</span></summary>
+          <div class="acc-body">Quá trình học đã giúp mình nhận ra rằng công nghệ và AI chỉ là công cụ hỗ trợ, còn sự kiên trì luyện tập mỗi ngày mới là điều quyết định khả năng ngôn ngữ. Mình học được cách sắp xếp thời gian khoa học hơn và tận dụng công cụ số hiệu quả hơn cho việc học tiếng Nhật.</div>
+        </details>
+        <details class="acc-item reveal">
+          <summary>🌱 Quá trình trưởng thành <span class="acc-plus">+</span></summary>
+          <div class="acc-body">Từ những bỡ ngỡ ban đầu khi làm quen với máy tính và các công cụ số, mình đã dần tự tin hơn trong việc quản lý tài liệu, tra cứu thông tin đáng tin cậy và phối hợp làm việc nhóm trực tuyến – nền tảng cho hành trình học ngôn ngữ lâu dài phía trước.</div>
+        </details>
+        <details class="acc-item reveal">
+          <summary>🎯 Mục tiêu môn học <span class="acc-plus">+</span></summary>
+          <div class="acc-body">Mình mong muốn không chỉ giỏi tiếng Nhật trên giấy tờ, mà còn biết ứng dụng công nghệ – đặc biệt là AI – để hỗ trợ việc học thông minh hơn, đồng thời vẫn giữ vững sự liêm chính khi sử dụng các công cụ hiện đại.</div>
+        </details>
+        <details class="acc-item reveal">
+          <summary>💝 Điều học được khi làm Portfolio <span class="acc-plus">+</span></summary>
+          <div class="acc-body">Làm portfolio giúp mình nhìn lại có hệ thống những gì đã học được. Đây không chỉ là nơi lưu trữ bài tập, mà còn là cuốn nhật ký nhỏ đáng yêu, ghi lại từng bước tiến bộ trong hành trình chinh phục tiếng Nhật của mình.</div>
+        </details>
       </div>
-      <a href="https://drive.google.com/file/d/1dWB6X7yQzwMyfzw9XbgputE8zMFFMOLI/view?usp=drive_link" class="drive-btn">Xem báo cáo</a>
-    </div>
 
-    <div class="b-card pink reveal">
-      <div class="hanzi-seal">五</div>
-      <span class="b-tag">Bài 5</span>
-      <h3>Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
-      <div class="b-goal">
-        <div class="row"><b>Mục tiêu:</b> Kết hợp AI văn bản và AI hình ảnh để thiết kế infographic.</div>
-        <div class="row"><b>Quá trình thực hiện:</b> Phối hợp chuỗi công cụ AI đa chức năng từ khâu biên kịch nội dung chữ, tạo lập chất liệu hình ảnh độc quyền cho đến sắp xếp bố cục phân tầng thông tin cho ấn phẩm Infographic.</div>
+      <div class="summary-stats">
+        <div class="stat reveal"><div class="num">06/06</div><div class="label">Dự án hoàn thành</div></div>
+        <div class="stat reveal"><div class="num">100%</div><div class="label">Cố gắng từng ngày</div></div>
+        <div class="stat reveal"><div class="num">A+</div><div class="label">Mục tiêu môn học</div></div>
       </div>
-      <a href="https://drive.google.com/file/d/1NRC0Xk0okPfGi15qgkEdI820S1r0F_Q3/view?usp=drive_link" class="drive-btn">Xem báo cáo</a>
-    </div>
+    </section>
 
-    <div class="b-card blue reveal">
-      <div class="hanzi-seal">六</div>
-      <span class="b-tag">Bài 6</span>
-      <h3>Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
-      <div class="b-goal">
-        <div class="row"><b>Mục tiêu:</b> Hiểu các tiêu chuẩn liêm chính học thuật khi dùng AI hỗ trợ dịch thuật và nghiên cứu.</div>
-        <div class="row"><b>Quá trình thực hiện:</b> Đối chiếu nghiêm túc các sản phẩm học tập với bộ quy chuẩn ứng xử AI của trường Đại học Ngoại ngữ - ĐHQGHN, thực hành kỹ thuật dẫn nguồn minh bạch và tự thẩm định tính chính trực cho mọi tài liệu.</div>
-      </div>
-      <a href="https://drive.google.com/file/d/16EViLN6IUC6aMFtzHL-Yzx9VSF-8bPUH/view?usp=drive_link" class="drive-btn">Xem báo cáo</a>
-    </div>
-  </div>
-</section>
-
-<section id="tong-ket">
-  <div class="section-head reveal">
-    <span class="eyebrow">Tổng kết</span>
-    <h2>Nhìn nhận &amp; Trải nghiệm học tập 🌸</h2>
-    <p>Chọn một mục bên trái để đọc chia sẻ của mình nhé</p>
-  </div>
-
-  <div class="tk-wrap reveal">
-    <div class="tk-tabs">
-      <button class="tk-tab active" data-tab="t1"><span class="num">1</span> Bài học cốt lõi</button>
-      <button class="tk-tab" data-tab="t2"><span class="num">2</span> Quá trình trưởng thành</button>
-      <button class="tk-tab" data-tab="t3"><span class="num">3</span> Mục tiêu môn học</button>
-      <button class="tk-tab" data-tab="t4"><span class="num">4</span> Điều học được từ Portfolio</button>
-    </div>
-    <div class="tk-panel-wrap">
-      <div class="tk-panel active" id="t1"><strong>💡 Bài học cốt lõi:</strong> Mình nhận ra rằng công nghệ và AI chỉ là công cụ hỗ trợ, còn sự chăm chỉ luyện tập mỗi ngày mới là điều quyết định khả năng của mình. Giống như học viết chữ Hán, cần từng nét một, kiên nhẫn và không nóng vội.</div>
-      <div class="tk-panel" id="t2"><strong>🌱 Quá trình trưởng thành:</strong> Những ngày đầu mình còn bỡ ngỡ với các thao tác sự dụng AI và các công cụ, giờ đây mình đã dần tự tin hơn khi sử dụng và ứng công nghê, sắp xếp tài liệu học tập và làm việc nhóm trực tuyến. Đó là những bước tiến nhỏ nhưng chắc chắn trên hành trình của mình.</div>
-      <div class="tk-panel" id="t3"><strong>🎯 Mục tiêu môn học:</strong> Ngoài mong muốn hiểu sâu hơn về ngôn ngữ và văn hóa Trung Quốc, mình còn muốn được đồng thời biết ứng dụng công nghệ — đặc biệt là AI — để hỗ trợ việc học tiếng Trung một cách hiệu quả, có trách nhiệm và tôn trọng bản quyền tri thức.</div>
-      <div class="tk-panel" id="t4"><strong>💝 Điều học được từ Portfolio:</strong> Làm portfolio giúp mình nhìn lại một cách có hệ thống những gì đã học. Đây không chỉ là nơi lưu bài tập, mà còn là cuốn nhật ký nhỏ ghi lại hành trình làm quen với công nghệ và AI của mình.</div>
-    </div>
-  </div>
-
-  <div class="ring-strip">
-    <svg width="0" height="0">
-      <defs>
-        <linearGradient id="gradPink" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#FF9FC6"/><stop offset="100%" stop-color="#E8659B"/>
-        </linearGradient>
-        <linearGradient id="gradMix" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#FF9FC6"/><stop offset="100%" stop-color="#7FB8F2"/>
-        </linearGradient>
-        <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#7FB8F2"/><stop offset="100%" stop-color="#4E8FD9"/>
-        </linearGradient>
-      </defs>
-    </svg>
-    <div class="ring-item reveal" data-pct="100">
-      <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="54"/><circle class="ring-bar" cx="60" cy="60" r="54"/></svg>
-      <div class="ring-num">06/06</div>
-      <div class="ring-label">Dự án hoàn thành</div>
-    </div>
-    <div class="ring-item reveal" data-pct="100">
-      <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="54"/><circle class="ring-bar" cx="60" cy="60" r="54"/></svg>
-      <div class="ring-num">100%</div>
-      <div class="ring-label">Cố gắng mỗi ngày</div>
-    </div>
-    <div class="ring-item reveal" data-pct="95">
-      <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="54"/><circle class="ring-bar" cx="60" cy="60" r="54"/></svg>
-      <div class="ring-num">A+</div>
-      <div class="ring-label">Mục tiêu môn học</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  🩷 made by Hoàng Trà Mi . 2026
-</footer>
+    <footer>
+      🌸 made by Trương Thảo Linh — cảm ơn đã ghé thăm! 🌿
+    </footer>
+  </main>
+</div>
 
 <script>
-  const stickerEmojis = ['🌸','🩷','🩵','☁️','✨','💌','🎐','🧊'];
-  const layer = document.getElementById('sticker-layer');
-  const stickers = [];
-  for(let i=0;i<14;i++){
-    const el = document.createElement('div');
-    el.className = 'float-sticker';
-    el.textContent = stickerEmojis[i % stickerEmojis.length];
-    el.style.left = (Math.random()*100) + 'vw';
-    el.style.top = (Math.random()*420) + 'vh';
-    el.style.animationDelay = (Math.random()*4) + 's';
-    el.style.animationDuration = (4 + Math.random()*3) + 's';
-    el.style.fontSize = (1.1 + Math.random()*1.2) + 'rem';
-    layer.appendChild(el);
-    stickers.push({ el, speed: 0.05 + Math.random()*0.15 });
-  }
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    stickers.forEach(s => { s.el.style.transform = `translateY(${-y * s.speed}px)`; });
-  }, { passive: true });
+  // ----- LOGIC ĐIỀU KHIỂN CÁC STICKER CÙNG TONE MÀU CHUYỂN ĐỘNG Ở NỀN -----
+  const container = document.getElementById('sakura-container');
+  const maxStickers = 35; // Số lượng sticker vừa phải để tránh làm rối mắt
+  const stickerData = [];
+  
+  // Danh sách các sticker dễ thương cùng tone màu hồng, pastel, học tập phù hợp với Linh
+  const stickersPool = ['🌸', '🎀', '📖', '💕', '💮', '🌷', '✨', '🐾', '💌', '🧸'];
 
+  function createSticker() {
+    const el = document.createElement('div');
+    el.className = 'bg-sticker';
+    // Chọn ngẫu nhiên một sticker trong pool
+    el.textContent = stickersPool[Math.floor(Math.random() * stickersPool.length)];
+
+    // Vị trí xuất phát ngẫu nhiên trên toàn màn hình
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight * 1.5 - 40;
+    
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    container.appendChild(el);
+
+    return {
+      el,
+      x,
+      y,
+      // Tốc độ bay bồng bềnh siêu nhẹ
+      speedY: Math.random() * 0.4 + 0.2,    
+      speedX: Math.random() * 0.3 - 0.15, // Bay nhẹ sang trái hoặc phải
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() * 0.4 - 0.2), // Tốc độ tự xoay chậm rãi
+      opacity: Math.random() * 0.35 + 0.35 // Độ trong suốt nhẹ (từ 0.35 đến 0.7) để chìm vào nền
+    };
+  }
+
+  // Khởi tạo danh sách các sticker ban đầu trải đều màn hình
+  for (let i = 0; i < maxStickers; i++) {
+    stickerData.push(createSticker());
+  }
+
+  function updateStickers() {
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+
+    for (let i = 0; i < stickerData.length; i++) {
+      const s = stickerData[i];
+      s.y += s.speedY;
+      s.x += s.speedX;
+      s.rotation += s.rotSpeed;
+
+      // Cập nhật vị trí lên CSS
+      s.el.style.top = `${s.y}px`;
+      s.el.style.left = `${s.x}px`;
+      s.el.style.opacity = s.opacity;
+      s.el.style.transform = `rotate(${s.rotation}deg) scale(${s.opacity + 0.2})`;
+
+      // Khi trôi tuột khỏi cạnh dưới màn hình thì hồi sinh lại lên trên đầu
+      if (s.y > height + 30) {
+        s.y = -40;
+        s.x = Math.random() * width;
+        s.speedY = Math.random() * 0.4 + 0.2;
+        s.speedX = Math.random() * 0.3 - 0.15;
+        s.opacity = Math.random() * 0.35 + 0.35;
+      }
+      // Nếu trôi quá biên trái/phải thì bật ngược lại nhẹ nhàng
+      if (s.x < -30 || s.x > width + 30) {
+        s.speedX *= -1;
+      }
+    }
+    requestAnimationFrame(updateStickers);
+  }
+  // Kích hoạt animation
+  requestAnimationFrame(updateStickers);
+
+
+  // ----- TILT, CURSOR GLOW & INTERSECTION OBSERVER LOGIC -----
   const glow = document.getElementById('cursorGlow');
   window.addEventListener('mousemove', (e) => {
-    glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; glow.style.opacity = 1;
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+    glow.style.opacity = 1;
   });
   window.addEventListener('mouseleave', () => { glow.style.opacity = 0; });
 
+  function addTilt(el, strength = 5){
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      el.style.transform = `perspective(800px) rotateY(${px * strength}deg) rotateX(${-py * strength}deg) translateY(-4px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  }
+  document.querySelectorAll('.narrative-card, .t-card, .stat, .closing-card').forEach(el => addTilt(el, 4));
+
   const reveals = document.querySelectorAll('.reveal');
-  reveals.forEach((el, i) => { el.style.transitionDelay = (i % 6) * 0.07 + 's'; });
+  reveals.forEach((el, i) => { el.style.transitionDelay = (i % 6) * 0.06 + 's'; });
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        if(entry.target.classList.contains('ring-item')){
-          const bar = entry.target.querySelector('.ring-bar');
-          const pct = parseFloat(entry.target.dataset.pct);
-          const offset = 339.3 - (339.3 * pct / 100);
-          requestAnimationFrame(()=>{ bar.style.strokeDashoffset = offset; });
-        }
-        io.unobserve(entry.target);
-      }
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
     });
   }, { threshold: 0.12 });
   reveals.forEach(el=>io.observe(el));
@@ -564,19 +629,8 @@
         navLinks.forEach(l=>{ l.classList.toggle('active', l.getAttribute('href') === '#' + id); });
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.3 });
   sections.forEach(s=>navIo.observe(s));
-
-  const tkTabs = document.querySelectorAll('.tk-tab');
-  const tkPanels = document.querySelectorAll('.tk-panel');
-  tkTabs.forEach(tab=>{
-    tab.addEventListener('click', ()=>{
-      tkTabs.forEach(t=>t.classList.remove('active'));
-      tkPanels.forEach(p=>p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
 </script>
 </body>
 </html>
