@@ -518,14 +518,6 @@
 </section>
 
 <footer>🩷 made by Hoàng Trà Mi . 2026</footer>
-
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('in-view'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(el=>io.observe(el));
-</script>
 <script>
   // ===== HIỆU ỨNG CÁNH HOA ĐÀO RƠI (CANVAS) =====
   const canvas = document.getElementById('sakura-canvas');
