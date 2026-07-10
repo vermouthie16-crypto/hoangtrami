@@ -39,6 +39,7 @@
   h1, h2, h3, .display{ font-family: 'Fraunces', serif; font-weight: 700; font-style: normal; }
   a{ color: inherit; text-decoration: none; }
 
+  /* ===== BACKGROUND EFFECTS ===== */
   .blob{ position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.5; z-index: 0; pointer-events: none; }
   .blob-1{ width: 380px; height: 380px; background: var(--pink-soft); top: -100px; left: -80px; animation: float1 15s ease-in-out infinite; }
   .blob-2{ width: 340px; height: 340px; background: var(--blue-soft); bottom: -90px; right: -80px; animation: float2 19s ease-in-out infinite; }
@@ -50,6 +51,8 @@
   #sticker-layer{ position: fixed; inset: 0; pointer-events: none; z-index: 1; }
   .float-sticker{ position: absolute; font-size: 1.6rem; animation: bob 5.5s ease-in-out infinite; opacity: 0.9; will-change: transform; filter: drop-shadow(0 6px 10px rgba(126,140,214,0.18)); }
   @keyframes bob{ 0%,100%{ transform: translateY(0) rotate(-6deg); } 50%{ transform: translateY(-18px) rotate(8deg); } }
+
+  #sakura-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 2; }
 
   .cursor-glow{
     position: fixed; width: 20px; height: 20px; border-radius: 50%;
@@ -91,7 +94,7 @@
   }
   .nav-btn:hover{ transform: translateY(-3px) rotate(-1deg); box-shadow: 0 12px 22px -8px rgba(126,140,214,0.5); }
 
-  section{ position: relative; z-index: 2; padding: 80px 6vw; max-width: 1180px; margin: 0 auto; }
+  section{ position: relative; z-index: 3; padding: 80px 6vw; max-width: 1180px; margin: 0 auto; }
 
   /* ===== HERO ===== */
   .hero-split{ display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: start; padding-top: 30px; }
@@ -286,7 +289,7 @@
   .ring-num{ position: relative; margin-top: -92px; font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--ink); }
   .ring-label{ font-size: 0.86rem; color: var(--ink-soft); text-align: center; margin-top: 46px; }
 
-  footer{ position: relative; z-index: 2; text-align: center; padding: 40px 6vw 60px; color: var(--ink-soft); font-size: 0.9rem; }
+  footer{ position: relative; z-index: 3; text-align: center; padding: 40px 6vw 60px; color: var(--ink-soft); font-size: 0.9rem; }
 
   @media (max-width: 760px){
     nav{ padding: 14px 5vw; }
@@ -300,6 +303,7 @@
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 <div id="sticker-layer"></div>
+<canvas id="sakura-canvas"></canvas>
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <nav>
@@ -336,7 +340,7 @@
     <div class="hero-content">
       <span class="eyebrow reveal">Giới thiệu</span>
       <div class="lead-card reveal">
-        <p class="lead">Chào mừng bạn đã ghé thăm góc nhỏ lưu trữ của một cô sinh viên ngành <b>Ngôn ngữ và Văn hóa Trung Quốc</b> tại <b>Trường Đại học Ngoại Ngữ – Đại học Quốc gia Hà Nội</b>. Trang Portfolio này chính là một cuốn nhật ký số sống động, ghi lại hành trình mình từng bước phá vỡ giới hạn của một người học ngôn ngữ thuần túy để tự tin kết nối, làm chủ công nghệ số và các ứng dụng trí tuệ nhân tạo thế hệ mới.</p>
+        <p class="lead">Chào mừng bạn đã ghé thăm góc nhỏ lưu trữ của một cô sinh viên ngành <b>Ngôn ngữ và Văn hóa Trung Quốc</b> tại <b>Trường Đại học Ngoại Ngữ – Đại học Quốc gia Hà Nội</b>. Trang Portfolio này chính là một cuốn nhật ký số sống động, ghi lại hành trình mình từng bước phá vỡ giới hạn của một người học ngôn ngữ thuần tùy để tự tin kết nối, làm chủ công nghệ số và các ứng dụng trí tuệ nhân tạo thế hệ mới.</p>
       </div>
 
       <div class="narrative-card reveal">
@@ -503,7 +507,82 @@
 </footer>
 
 <script>
-  // Hệ thống tạo sticker động cùng tone màu hồng - xanh pastel bay nhẹ theo cuộn trang
+  // ===== HIỆU ỨNG CÁNH HOA ĐÀO RƠI (CANVAS) =====
+  const canvas = document.getElementById('sakura-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  let petals = [];
+  const maxPetals = 25; // Số lượng cánh hoa trên màn hình cùng một lúc để tối ưu hiệu năng
+  
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class Petal {
+    constructor() {
+      this.reset();
+      this.y = Math.random() * canvas.height; // Phân bổ ngẫu nhiên chiều cao lúc khởi tạo
+    }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = -20;
+      this.size = Math.random() * 6 + 6;
+      this.speedX = Math.random() * 1 + 0.5; // Bay chéo nhẹ sang phải
+      this.speedY = Math.random() * 1.2 + 0.8; // Tốc độ rơi xuống
+      this.flip = Math.random();
+      this.flipSpeed = Math.random() * 0.03 + 0.01;
+      this.angle = Math.random() * Math.PI;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.flip += this.flipSpeed;
+      this.angle += 0.01;
+      
+      // Nếu cánh hoa rơi hết màn hình hoặc bay lệch quá bên phải thì reset về đỉnh đầu
+      if (this.y > canvas.height + 20 || this.x > canvas.width + 20) {
+        this.reset();
+      }
+    }
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      
+      // Tạo màu hồng pastel đổ gradient nhẹ cho cánh hoa mềm mại
+      let gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size);
+      gradient.addColorStop(0, '#FFE3EE');
+      gradient.addColorStop(0.7, '#FFAECF');
+      gradient.addColorStop(1, '#FF9FC6');
+      ctx.fillStyle = gradient;
+      
+      ctx.beginPath();
+      // Vẽ hình giọt nước / hình cánh hoa đơn giản
+      ctx.ellipse(0, 0, this.size * Math.abs(Math.sin(this.flip)), this.size, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  // Khởi tạo danh sách cánh hoa
+  for (let i = 0; i < maxPetals; i++) {
+    petals.push(new Petal());
+  }
+
+  function animateSakura() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    petals.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateSakura);
+  }
+  animateSakura();
+
+  // ===== HỆ THỐNG STICKER ĐỘNG =====
   const stickerEmojis = ['🌸','🩷','🩵','☁️','✨','💌','🎐','🧊'];
   const layer = document.getElementById('sticker-layer');
   const stickers = [];
@@ -524,12 +603,14 @@
     stickers.forEach(s => { s.el.style.transform = `translateY(${-y * s.speed}px)`; });
   }, { passive: true });
 
+  // ===== CURSOR GLOW =====
   const glow = document.getElementById('cursorGlow');
   window.addEventListener('mousemove', (e) => {
     glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; glow.style.opacity = 1;
   });
   window.addEventListener('mouseleave', () => { glow.style.opacity = 0; });
 
+  // ===== INTERSECTION OBSERVER FOR REVEAL ANIMATIONS =====
   const reveals = document.querySelectorAll('.reveal');
   reveals.forEach((el, i) => { el.style.transitionDelay = (i % 6) * 0.07 + 's'; });
   const io = new IntersectionObserver((entries)=>{
@@ -548,6 +629,7 @@
   }, { threshold: 0.12 });
   reveals.forEach(el=>io.observe(el));
 
+  // ===== SMOOTH SCROLL =====
   document.querySelectorAll('a[href^="#"]').forEach(link=>{
     link.addEventListener('click', (e)=>{
       const target = document.querySelector(link.getAttribute('href'));
@@ -555,6 +637,7 @@
     });
   });
 
+  // ===== ACTIVE NAV LINKS ON SCROLL =====
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
   const navIo = new IntersectionObserver((entries)=>{
@@ -567,6 +650,7 @@
   }, { threshold: 0.35 });
   sections.forEach(s=>navIo.observe(s));
 
+  // ===== TAB TỔNG KẾT =====
   const tkTabs = document.querySelectorAll('.tk-tab');
   const tkPanels = document.querySelectorAll('.tk-panel');
   tkTabs.forEach(tab=>{
